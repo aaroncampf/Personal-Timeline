@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Database\Activity.vb" />
     <Compile Include="Database\Database.vb" />
+    <Compile Include="Database\MetaData.vb" />
     <Compile Include="Database\Timeline.vb" />
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>

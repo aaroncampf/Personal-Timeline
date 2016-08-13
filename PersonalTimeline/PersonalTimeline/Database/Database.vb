@@ -19,7 +19,10 @@ Public Class Database
         ' on configuring and using a Code First model, see http:'go.microsoft.com/fwlink/?LinkId=390109.
     ' Public Overridable Property MyEntities() As DbSet(Of MyEntity)
 
+    Public Overridable Property Timelines() As DbSet(Of Timeline)
     Public Overridable Property Activities() As DbSet(Of Activity)
+    Public Overridable Property MetaData() As DbSet(Of MetaData)
+
 
 End Class
 
