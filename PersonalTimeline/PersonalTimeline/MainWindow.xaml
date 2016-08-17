@@ -19,10 +19,11 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox  IsEditable="True" 
-                                       DisplayMemberPath="Name"
-                                       ItemsSource="{Binding Activities_Cache, ElementName=window}"
-                                       SelectedItem="{Binding Activity}"                                       
+                            <ComboBox  
+                                IsEditable="True" 
+                                DisplayMemberPath="Name"
+                                ItemsSource="{Binding Activities_Cache, ElementName=window}"
+                                SelectedItem="{Binding Activity}"                                       
                             />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
