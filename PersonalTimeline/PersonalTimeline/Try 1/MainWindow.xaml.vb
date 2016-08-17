@@ -49,7 +49,6 @@
 
     Private Sub btnLoad_Click(sender As Object, e As RoutedEventArgs) Handles btnLoad.Click
         dgdTimeline.ItemsSource = db.Timelines.ToArray
-
         cbxActivities.ItemsSource = db.Activities.ToList
     End Sub
 End Class
