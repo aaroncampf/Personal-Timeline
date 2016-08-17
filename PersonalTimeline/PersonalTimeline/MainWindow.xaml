@@ -5,6 +5,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	mc:Ignorable="d"
 	xmlns:local="clr-namespace:PersonalTimeline"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
 	Title="MainWindow" Height="461.75" Width="743">
     <Grid>
         <ComboBox x:Name="test"  IsEditable="True" 
@@ -12,9 +13,9 @@
                               ItemsSource="{Binding Activities1, ElementName=window}" Margin="414,10,229,390" RenderTransformOrigin="0.5,0.5" IsSynchronizedWithCurrentItem="True"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <Button x:Name="btnSeed" Content="Seed" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Width="75" />
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="75" />
 
-        <DataGrid x:Name="dgdTimeline" Margin="0,69,213,0" d:DataContext="{d:DesignInstance Type=local:Timeline}" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgdTimeline" Margin="0,141,203,0" d:DataContext="{d:DesignInstance Type=local:Timeline}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -29,14 +30,32 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridComboBoxColumn x:Name="cbxActivities" DisplayMemberPath="Name" SortMemberPath="Name" SelectedValuePath="ID" SelectedItemBinding="{Binding Activity}" Header="Activity">
-                </DataGridComboBoxColumn>
+                <DataGridComboBoxColumn x:Name="cbxActivities" DisplayMemberPath="Name" SortMemberPath="Name" SelectedValuePath="ID" SelectedItemBinding="{Binding Activity}" Header="Activity" />
                 <DataGridTextColumn Header="Time" Binding="{Binding Time}" SortDirection="Ascending" />
                 <DataGridTextColumn Header="MetaData Primary" Binding="{Binding MetaData_Primary}"/>
                 <DataGridTextColumn Header="MetaData Secondary" Binding="{Binding MetaData_Secondary}"/>
+
+                <DataGridTemplateColumn Header="Pick a Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Time, StringFormat= HH:mm tt}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <!--<DatePicker SelectedDate="{Binding Time}" />-->
+                            <xctk:DateTimePicker 
+                                x:Name="dtpStartTime"
+                                Format="Custom" 
+                                CurrentDateTimePart="Hour12" Kind="Local"
+                            />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Additional stuff for editing Meta data &#xD;&#xA;and what not" HorizontalAlignment="Left" Margin="527,69,0,0" VerticalAlignment="Top" Width="208" Height="363"/>
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="287,32,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Additional stuff for editing Meta data &#xD;&#xA;and what not" Margin="537,141,0,0"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="288,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <DatePicker HorizontalAlignment="Left" Margin="0,112,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
