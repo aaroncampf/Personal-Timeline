@@ -21,9 +21,8 @@
                         <DataTemplate>
                             <ComboBox  IsEditable="True" 
                                        DisplayMemberPath="Name"
-                                       ItemsSource="{Binding Activities1, ElementName=window}"
-                                       SelectedItem="{Binding Activity}"
-                                       
+                                       ItemsSource="{Binding Activities_Cache, ElementName=window}"
+                                       SelectedItem="{Binding Activity}"                                       
                             />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

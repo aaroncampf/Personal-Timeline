@@ -2,7 +2,7 @@
 
 Class MainWindow
     Dim db As New Database
-    Public Property Activities1 As New ObjectModel.ObservableCollection(Of Activity)(db.Activities)
+    Public Property Activities_Cache As New ObjectModel.ObservableCollection(Of Activity)(db.Activities)
     'Dim Database_Location = db.Database.SqlQuery(Of String)("SELECT physical_name  FROM sys.database_files WHERE [type] = 0").First
 
 
@@ -13,7 +13,7 @@ Class MainWindow
 
         db.Timelines.Add(Timeline)
         db.SaveChanges()
-        Activities1.Add(Activity)
+        Activities_Cache.Add(Activity)
     End Sub
 
     Private Sub btnSeed_Click(sender As Object, e As RoutedEventArgs) Handles btnSeed.Click
