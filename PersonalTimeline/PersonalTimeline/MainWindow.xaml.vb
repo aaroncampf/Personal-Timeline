@@ -1,15 +1,19 @@
-﻿Class MainWindow
+﻿
+
+Class MainWindow
     Dim db As New Database
+    Public Property Activities1 As New ObjectModel.ObservableCollection(Of Activity)(db.Activities)
     'Dim Database_Location = db.Database.SqlQuery(Of String)("SELECT physical_name  FROM sys.database_files WHERE [type] = 0").First
+
 
     Private Sub Button_Click_1(sender As Object, e As RoutedEventArgs)
         Dim Activity As New Activity With {.Name = "Test"}
         db.Activities.Add(Activity)
-
         Dim Timeline As New Timeline With {.Time = DateTime.Now, .Activity = Activity}
 
         db.Timelines.Add(Timeline)
         db.SaveChanges()
+        Activities1.Add(Activity)
     End Sub
 
     Private Sub btnSeed_Click(sender As Object, e As RoutedEventArgs) Handles btnSeed.Click
@@ -51,5 +55,10 @@
         dgdTimeline.ItemsSource = db.Timelines.ToArray
 
         cbxActivities.ItemsSource = db.Activities.ToList
+        test.ItemsSource = db.Activities.ToList
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As RoutedEventArgs) Handles btnSave.Click
+        db.SaveChanges()
     End Sub
 End Class
