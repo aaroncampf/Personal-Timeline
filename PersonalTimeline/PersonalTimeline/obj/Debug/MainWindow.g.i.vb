@@ -67,40 +67,33 @@ Partial Public Class MainWindow
     
     #ExternalSource("..\..\MainWindow.xaml",11)
     <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
-    Friend WithEvents test As System.Windows.Controls.ComboBox
-    
-    #End ExternalSource
-    
-    
-    #ExternalSource("..\..\MainWindow.xaml",13)
-    <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
     Friend WithEvents btnSeed As System.Windows.Controls.Button
     
     #End ExternalSource
     
     
-    #ExternalSource("..\..\MainWindow.xaml",14)
+    #ExternalSource("..\..\MainWindow.xaml",12)
     <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
     Friend WithEvents btnLoad As System.Windows.Controls.Button
     
     #End ExternalSource
     
     
-    #ExternalSource("..\..\MainWindow.xaml",16)
+    #ExternalSource("..\..\MainWindow.xaml",14)
     <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
     Friend WithEvents dgdTimeline As System.Windows.Controls.DataGrid
     
     #End ExternalSource
     
     
-    #ExternalSource("..\..\MainWindow.xaml",31)
+    #ExternalSource("..\..\MainWindow.xaml",29)
     <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
     Friend WithEvents cbxActivities As System.Windows.Controls.DataGridComboBoxColumn
     
     #End ExternalSource
     
     
-    #ExternalSource("..\..\MainWindow.xaml",61)
+    #ExternalSource("..\..\MainWindow.xaml",59)
     <System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")>  _
     Friend WithEvents btnSave As System.Windows.Controls.Button
     
@@ -138,34 +131,22 @@ Partial Public Class MainWindow
             Return
         End If
         If (connectionId = 2) Then
-            Me.test = CType(target,System.Windows.Controls.ComboBox)
-            Return
-        End If
-        If (connectionId = 3) Then
-            
-            #ExternalSource("..\..\MainWindow.xaml",12)
-            AddHandler CType(target,System.Windows.Controls.Button).Click, New System.Windows.RoutedEventHandler(AddressOf Me.Button_Click_1)
-            
-            #End ExternalSource
-            Return
-        End If
-        If (connectionId = 4) Then
             Me.btnSeed = CType(target,System.Windows.Controls.Button)
             Return
         End If
-        If (connectionId = 5) Then
+        If (connectionId = 3) Then
             Me.btnLoad = CType(target,System.Windows.Controls.Button)
             Return
         End If
-        If (connectionId = 6) Then
+        If (connectionId = 4) Then
             Me.dgdTimeline = CType(target,System.Windows.Controls.DataGrid)
             Return
         End If
-        If (connectionId = 7) Then
+        If (connectionId = 5) Then
             Me.cbxActivities = CType(target,System.Windows.Controls.DataGridComboBoxColumn)
             Return
         End If
-        If (connectionId = 8) Then
+        If (connectionId = 6) Then
             Me.btnSave = CType(target,System.Windows.Controls.Button)
             Return
         End If
