@@ -1,8 +1,11 @@
 ﻿
 
 Class MainWindow
-    Dim db As New Database
-    Public Property Activities_Cache As New ObjectModel.ObservableCollection(Of Activity)(db.Activities)
+    Public Property db As New Database
+
+    'TODO: Get Activities_Cache to use db.Activities.Local Somehow
+    'Public Property Activities_Cache As New ObjectModel.ObservableCollection(Of Activity)(db.Activities.ToList)
+    Public Property Activities_Cache As ObjectModel.ObservableCollection(Of Activity) = db.Activities.Local
     'Dim Database_Location = db.Database.SqlQuery(Of String)("SELECT physical_name  FROM sys.database_files WHERE [type] = 0").First
 
 
@@ -13,7 +16,7 @@ Class MainWindow
 
         db.Timelines.Add(Timeline)
         db.SaveChanges()
-        Activities_Cache.Add(Activity)
+        'Activities_Cache.Add(Activity)
     End Sub
 
     Private Sub btnSeed_Click(sender As Object, e As RoutedEventArgs) Handles btnSeed.Click
@@ -52,13 +55,16 @@ Class MainWindow
     End Sub
 
     Private Sub btnLoad_Click(sender As Object, e As RoutedEventArgs) Handles btnLoad.Click
-        dgdTimeline.ItemsSource = db.Timelines.ToArray
-
-        cbxActivities.ItemsSource = db.Activities.ToList
-        test.ItemsSource = db.Activities.ToList
+        db.Timelines.ToList() '<- This loads data into the Local property
+        db.Activities.ToList()
+        cbxActivities.ItemsSource = db.Activities.Local
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As RoutedEventArgs) Handles btnSave.Click
         db.SaveChanges()
+    End Sub
+
+    Private Sub dgdTimeline_InitializingNewItem(sender As Object, e As InitializingNewItemEventArgs) Handles dgdTimeline.InitializingNewItem
+        CType(e.NewItem, Timeline).Time = Now
     End Sub
 End Class

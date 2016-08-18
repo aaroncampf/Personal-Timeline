@@ -10,5 +10,5 @@
 
     <ComponentModel.DataAnnotations.Required>
     Public Property Activity As Activity
-    Public Property MetaData As New HashSet(Of MetaData)
+    Public Property MetaData As New ObjectModel.ObservableCollection(Of MetaData)
 End Class

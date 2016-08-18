@@ -6,5 +6,5 @@
     Public Property Description As String
     Public Property Misc As String
 
-    Public Property Timelines As New HashSet(Of Timeline)
+    Public Property Timelines As New ObjectModel.ObservableCollection(Of Timeline)
 End Class
