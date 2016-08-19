@@ -3,20 +3,14 @@
 Class MainWindow
     Public Property db As New Database
 
-    'TODO: Get Activities_Cache to use db.Activities.Local Somehow
-    'Public Property Activities_Cache As New ObjectModel.ObservableCollection(Of Activity)(db.Activities.ToList)
-    Public Property Activities_Cache As ObjectModel.ObservableCollection(Of Activity) = db.Activities.Local
-    'Dim Database_Location = db.Database.SqlQuery(Of String)("SELECT physical_name  FROM sys.database_files WHERE [type] = 0").First
+    ''TODO: Get Activities_Cache to use db.Activities.Local Somehow
+    'Public Property Activities_Cache As ObjectModel.ObservableCollection(Of Activity) = db.Activities.Local
 
-
-    Private Sub Button_Click_1(sender As Object, e As RoutedEventArgs)
-        Dim Activity As New Activity With {.Name = "Test"}
-        db.Activities.Add(Activity)
-        Dim Timeline As New Timeline With {.Time = DateTime.Now, .Activity = Activity}
-
-        db.Timelines.Add(Timeline)
-        db.SaveChanges()
-        'Activities_Cache.Add(Activity)
+    Private Sub window_Loaded(sender As Object, e As RoutedEventArgs) Handles window.Loaded
+        db.Database.CreateIfNotExists()
+        db.Timelines.ToList() '<- This loads data into the Local property
+        db.Activities.ToList()
+        cbxActivities.ItemsSource = db.Activities.Local
     End Sub
 
     Private Sub btnSeed_Click(sender As Object, e As RoutedEventArgs) Handles btnSeed.Click
@@ -55,9 +49,7 @@ Class MainWindow
     End Sub
 
     Private Sub btnLoad_Click(sender As Object, e As RoutedEventArgs) Handles btnLoad.Click
-        db.Timelines.ToList() '<- This loads data into the Local property
-        db.Activities.ToList()
-        cbxActivities.ItemsSource = db.Activities.Local
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As RoutedEventArgs) Handles btnSave.Click
@@ -67,4 +59,5 @@ Class MainWindow
     Private Sub dgdTimeline_InitializingNewItem(sender As Object, e As InitializingNewItemEventArgs) Handles dgdTimeline.InitializingNewItem
         CType(e.NewItem, Timeline).Time = Now
     End Sub
+
 End Class
